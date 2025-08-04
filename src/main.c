@@ -1,14 +1,5 @@
 #include "push_swap.h"
 
-void	ft_putstr_fd(char *str, int fd)
-{
-	int	i;
-
-	i = 0;
-	while(str[i++])
-		write(fd, &str[i], 1);
-}
-
 int	ft_is_valid_num(char *num)
 {
 	int	nbr;
