@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 16:15:24 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/11 15:36:18 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/09 12:29:26 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/22 20:16:10 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-// Includes
-# include "../libft/libft.h"
-# include <unistd.h>
-
-// Prototypes
-int		ft_parse_error(int args, char **stack);
-int		ft_is_valid_num(char *num);
-int	ft_push_swap(int argc, char **argv);
-int	*ft_strings_to_ints(int argc, char **argv, t_gc *gc);
-
-#endif
+int	ft_isalnum(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}

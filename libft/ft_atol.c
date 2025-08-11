@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 16:15:24 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/11 15:36:18 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/08/10 21:23:24 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/10 22:31:11 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+long	ft_atol(const char *nbr)
+{
+	long	result;
+	int		sign;
+	int		i;
 
-// Includes
-# include "../libft/libft.h"
-# include <unistd.h>
-
-// Prototypes
-int		ft_parse_error(int args, char **stack);
-int		ft_is_valid_num(char *num);
-int	ft_push_swap(int argc, char **argv);
-int	*ft_strings_to_ints(int argc, char **argv, t_gc *gc);
-
-#endif
+	i = 0;
+	result = 0;
+	sign = 1;
+	while ((nbr[i] >= 9 && nbr[i] <= 13) || nbr[i] == 32)
+		i++;
+	if (nbr[i] == '-' || nbr[i] == '+')
+	{
+		if (nbr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (nbr[i] >= '0' && nbr[i] <= '9')
+	{
+		result = result * 10 + (nbr[i] - '0');
+		i++;
+	}
+	return (result * sign);
+}

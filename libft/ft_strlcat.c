@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 16:15:24 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/11 15:36:18 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/09 14:52:22 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/09 21:55:17 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-// Includes
-# include "../libft/libft.h"
-# include <unistd.h>
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	size_src;
+	size_t	size_dst;
 
-// Prototypes
-int		ft_parse_error(int args, char **stack);
-int		ft_is_valid_num(char *num);
-int	ft_push_swap(int argc, char **argv);
-int	*ft_strings_to_ints(int argc, char **argv, t_gc *gc);
-
-#endif
+	i = 0;
+	size_src = ft_strlen(src);
+	size_dst = ft_strlen(dst);
+	if (size_dst >= size)
+		return (size + size_src);
+	while (src[i] && (i + size_dst < size - 1))
+	{
+		dst[i + size_dst] = src[i];
+		i++;
+	}
+	dst[size_dst + i] = '\0';
+	return (size_src + size_dst);
+}

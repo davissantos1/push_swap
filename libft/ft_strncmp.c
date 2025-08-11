@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 16:15:24 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/11 15:36:18 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/10 11:14:51 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/10 11:32:57 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-// Includes
-# include "../libft/libft.h"
-# include <unistd.h>
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
-// Prototypes
-int		ft_parse_error(int args, char **stack);
-int		ft_is_valid_num(char *num);
-int	ft_push_swap(int argc, char **argv);
-int	*ft_strings_to_ints(int argc, char **argv, t_gc *gc);
-
-#endif
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] == '\0' || s2[i] == '\0')
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}

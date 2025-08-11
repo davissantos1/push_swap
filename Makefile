@@ -2,33 +2,52 @@
 
 CC= cc
 CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes
-SRC= src/main.c src/push_swap.c 
+SRC= src/main.c src/ft_push_swap.c
 OBJ= $(SRC:.c=.o)
 NAME= push_swap
 LIBFT_DIR= libft
 LIBFT= $(LIBFT_DIR)/libft.a
 
-# Rules
+# Makeflags
+MAKEFLAGS += --no-print-directory
 
+# Colors
+RED := \033[31m
+GREEN := \033[32m
+YELLOW := \033[33m
+BLUE := \033[34m
+RESET := \033[0m
+
+# Rules
 all: $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR) bonus
+	@echo "📚 ${BLUE}Compiling:${RESET} libft"
+	@$(MAKE) -C $(LIBFT_DIR) bonus
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@echo "💻 ${GREEN}Building:${RESET} ${NAME}"
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "🛠️  ${BLUE}Compiling:${RESET} sources to objects"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+debug: CFLAGS += -g -o0
+debug: re
+	@echo "⚠️  ${RED}Compilation mode:${RESET} debug"
 
 clean:
-	rm -rf $(OBJ)
-	$(MAKE) -C $(LIBFT_DIR) clean
+	@echo "🧹 ${YELLOW}Cleaning: ${RESET}project objects"
+	@rm -rf $(OBJ)
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@echo "🧹 ${YELLOW}Cleaning: ${RESET}libft objects"
 
 fclean: clean
-	rm -rf $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	@echo "💣 ${YELLOW}Cleaning: ${RESET}everything"
+	@rm -rf $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus debug

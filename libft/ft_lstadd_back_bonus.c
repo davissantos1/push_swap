@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 16:15:24 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/11 15:36:18 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/07/13 16:58:33 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/07/22 20:17:46 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-// Includes
-# include "../libft/libft.h"
-# include <unistd.h>
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*ptr;
 
-// Prototypes
-int		ft_parse_error(int args, char **stack);
-int		ft_is_valid_num(char *num);
-int	ft_push_swap(int argc, char **argv);
-int	*ft_strings_to_ints(int argc, char **argv, t_gc *gc);
-
-#endif
+	ptr = ft_lstlast(*lst);
+	if (!ptr)
+	{
+		*lst = new;
+		return ;
+	}
+	ptr->next = new;
+}
