@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_mtxdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 16:15:12 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/12 22:37:02 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/08/12 21:20:59 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/12 22:07:30 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	**ft_mtxdup(char **mtx)
 {
-	t_gc	*gc;
-	//int		result;
-	char	**parsed;
+	int		i;
+	int		size;
+	char	**mtx_dup;
 
-	gc = gc_init();
-	if (!gc || argc < 2)
-		return (1);
-	parsed = ft_parse_nbrs(argc, argv, gc);
-	while (*parsed)
+	i = -1;
+	size = ft_mtxlen(mtx);
+	mtx_dup = ft_calloc((size + 1), sizeof(char *));
+	if (!mtx_dup)
+		return (NULL);
+	while (mtx[++i])
 	{
-		ft_putstr_fd(*parsed, 1);
-		parsed++;
+		mtx_dup[i] = ft_strdup(mtx[i]);
+		if (!mtx_dup[i])
+			return (ft_mtxfree(mtx_dup));
 	}
-	if (!ft_parse_error(parsed))
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (1);
-	}
-	//result = ft_push_swap(parsed);
-	//if (!result)
-	//	return (1);
-	return (0);
+	return (mtx_dup);
 }

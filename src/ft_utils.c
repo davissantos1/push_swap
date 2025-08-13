@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 23:22:19 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/11 17:05:26 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/08/11 21:24:45 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/12 21:54:06 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	*ft_strings_to_ints(int argc, char **argv, t_gc *gc)
+int	ft_is_valid_num(char *num)
 {
-	int	*result;
-	int	i;
-	int	j;
+	long	nbr;
+	int		i;
 
 	i = 0;
-	j = 1;
-	result = gc_malloc(gc, (argc * sizeof(int)), GC_DEFAULT);
-	if (!result)
-		return (NULL);
-	while (j < argc)
+	while (num[i])
 	{
-		result[i] = ft_atoi(argv[j]);
-		j++;
+		if (i == 0 && (num[i] == '-' || num[i] == '+'))
+			i++;
+		if (!ft_isdigit(num[i]))
+			return (0);
 		i++;
 	}
-	return (result);
-}
-
-int	ft_push_swap(int argc, char **argv, t_gc *gc)
-{
-	//t_list	*stack_a;
-	int		*int_array;
-
-	int_array = ft_strings_to_ints(argc, argv, gc);
-	if (!int_array)
+	nbr = ft_atol(num);
+	if (nbr > INT_MAX || nbr < INT_MIN)
 		return (0);
-	
 	return (1);
 }

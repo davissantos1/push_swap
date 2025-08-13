@@ -2,7 +2,7 @@
 
 CC= cc
 CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes
-SRC= src/main.c src/ft_push_swap.c
+SRC= src/main.c src/ft_parse.c src/ft_utils.c
 OBJ= $(SRC:.c=.o)
 NAME= push_swap
 LIBFT_DIR= libft
@@ -30,7 +30,7 @@ $(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 %.o: %.c
-	@echo "🛠️  ${BLUE}Compiling:${RESET} sources to objects"
+	@echo "🛠️  ${BLUE}Compiling:${RESET} $< to $@"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 debug: CFLAGS += -g -o0

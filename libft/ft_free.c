@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 16:15:12 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/12 22:37:02 by dasimoes         ###   ########.fr       */
+/*   Created: 2025/08/11 17:31:27 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/11 20:13:39 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_free(void *ptr)
 {
-	t_gc	*gc;
-	//int		result;
-	char	**parsed;
+	void	**p;
 
-	gc = gc_init();
-	if (!gc || argc < 2)
-		return (1);
-	parsed = ft_parse_nbrs(argc, argv, gc);
-	while (*parsed)
+	p = (void **)ptr;
+	if (p && *p)
 	{
-		ft_putstr_fd(*parsed, 1);
-		parsed++;
+		free(*p);
+		*p = NULL;
 	}
-	if (!ft_parse_error(parsed))
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (1);
-	}
-	//result = ft_push_swap(parsed);
-	//if (!result)
-	//	return (1);
-	return (0);
+	return (NULL);
 }
