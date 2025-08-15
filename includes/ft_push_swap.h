@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:15:24 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/12 21:53:29 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:43:59 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 // Prototypes
-char	**ft_parse_nbrs(int argc, char **argv, t_gc *gc);
+char	**ft_parse_nbrs(int argc, char **argv);
 int		ft_parse_error(char **parsed);
 int		ft_is_valid_num(char *num);
 

@@ -6,13 +6,13 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 21:21:18 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/12 22:42:13 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:43:43 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-char	**ft_parse_nbrs(int argc, char **argv, t_gc *gc)
+char	**ft_parse_nbrs(int argc, char **argv)
 {
 	char	**parsed;
 	char	**splitted;
@@ -32,7 +32,6 @@ char	**ft_parse_nbrs(int argc, char **argv, t_gc *gc)
 		ft_mtxfree(splitted);
 		i++;
 	}
-	gc_addptr(parsed, gc, GC_DEFAULT);
 	return (parsed);
 }
 
@@ -41,13 +40,13 @@ int	ft_parse_error(char **parsed)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (parsed[i])
 	{
 		j = i + 1;
 		if (!ft_is_valid_num(parsed[i]))
 			return (0);
-		while (parsed[i][j])
+		while (parsed[j])
 		{
 			if (!ft_strncmp(parsed[i], parsed[j], 12))
 				return (0);
