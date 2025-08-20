@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 		gc_free_all(gc);
 		return (1);
 	}
-	result = ft_push_swap(parsed);
+	result = ft_push_swap(parsed, gc);
 	if (!result)
 		return (1);
 	gc = gc_free_all(gc);
