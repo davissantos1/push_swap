@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	gc = gc_init();
 	if (!gc || argc < 2)
 	{
-		gc_free_all(&gc);
+		gc_free_all(gc);
 		return (1);
 	}
 	parsed = ft_parse_nbrs(argc, argv);
