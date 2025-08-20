@@ -31,3 +31,67 @@ int	ft_is_valid_num(char *num)
 		return (0);
 	return (1);
 }
+
+int	*ft_strings_to_ints(char **parsed, t_gc *gc)
+{
+	int	*result;
+	int	size;
+	int	i;
+
+	i = 0;
+	size = ft_mtxlen(parsed);
+	result = gc_malloc((size * sizeof(int)), gc, GC_DEFAULT);
+	if (!result)
+		return (NULL);
+	while (parsed[i])
+	{
+		result[i] = ft_atoi(parsed[i]);
+		i++;
+	}
+	return (result);
+}
+
+char	**ft_parse_nbrs(int argc, char **argv)
+{
+	char	**parsed;
+	char	**splitted;
+	char	**temp;
+	int		i;
+	
+	i = 1;
+	parsed = ft_calloc(1, sizeof(char *));
+	if (!parsed)
+		return (NULL);
+	while (i < argc)
+	{
+		temp = parsed;
+		splitted = ft_split(argv[i], ' ');
+		parsed = ft_mtxjoin(parsed, splitted);
+		ft_mtxfree(temp);
+		ft_mtxfree(splitted);
+		i++;
+	}
+	return (parsed);
+}
+
+int	ft_parse_error(char **parsed)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (parsed[i])
+	{
+		j = i + 1;
+		if (!ft_is_valid_num(parsed[i]))
+			return (0);
+		while (parsed[j])
+		{
+			if (!ft_strncmp(parsed[i], parsed[j], 12))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}

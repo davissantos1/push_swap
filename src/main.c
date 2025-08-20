@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_gc	*gc;
-	//int		result;
+	int		result;
 	char	**parsed;
 
 	gc = gc_init();
@@ -25,16 +25,17 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	parsed = ft_parse_nbrs(argc, argv);
-	gc_addptr(parsed, gc, GC_DEFAULT);
+	if (!gc_addmtx(parsed, gc, GC_DEFAULT))
+		return (1);
 	if (!ft_parse_error(parsed))
 	{
 		ft_putstr_fd("Error\n", 2);
-		gc_free_all(&gc);
+		gc_free_all(gc);
 		return (1);
 	}
-	//result = ft_push_swap(parsed);
-	//if (!result)
-	//	return (1);
-	gc_free_all(&gc);
+	result = ft_push_swap(parsed);
+	if (!result)
+		return (1);
+	gc = gc_free_all(gc);
 	return (0);
 }
