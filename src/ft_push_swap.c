@@ -12,52 +12,38 @@
 
 #include "ft_push_swap.h"
 
-t_stack	*ft_push_swap_checker(t_stack *stack, int *int_array)
+t_ctx	*ft_ctx_init(char **parsed, t_gc *gc)
 {
-	t_stack	*current;
-	int		i;
+	t_ctx	*ctx;
 
-	i = 0;
-	current = stack;
-	while (current)
-	{
-		if (current->num != int_array[i])
-			return (current);
-		i++;
-		current = stack->next;
-	}
+	ctx = gc_malloc(sizeof(t_ctx), gc, GC_DEFAULT);
+	if (!ctx)
+		return (0);
+	ctx->control = 0;
+	ctx->size = ft_mtxlen(parsed);
+	ctx->arr = ft_strings_to_ints(parsed, gc);
+	if (!ctx->arr)
+		return (0);
+	ctx->arr = ft_bubble_sort_int(ctx->arr, ctx->size);
+	ctx->sa = gc_malloc(sizeof(t_stack), gc, GC_DEFAULT);
+	if (!ctx->sa)
+		return (0);
+	ctx->sb = gc_malloc(sizeof(t_stack), gc, GC_DEFAULT);
+	if (!ctx->sb)
+		return (0);
+	return (ctx);
 }
-	
-void	ft_push_swap_solver(t_stack *stack_a, t_stack *stack_b, t_gc *gc)
-{
-	
 
 int	ft_push_swap(char **parsed, t_gc *gc)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		*int_array;
-	int		size;
-	int		i;
+	t_ctx	*ctx;
 
-	i = -1;
-	size = ft_mtxlen(parsed);
-	int_array = ft_strings_to_ints(parsed, gc);
-	if (!int_array)
+	ctx = ft_ctx_init(parsed, gc);
+	if (!ctx)
 		return (0);
-	int_array = ft_bubble_sort_int(int_array, size);
-	while (++i < size)
-	{
-		ft_putnbr_fd(int_array[i], 1);
-		ft_putchar_fd(' ', 1);
-	}
-	stack_a = gc_malloc(sizeof(t_stack), gc, GC_DEFAULT);
-	if (!stack_a)
+	ctx->sa = ft_stack_init(ctx, gc);
+	if (!ctx->sa)
 		return (0);
-	stack_b = gc_malloc(sizeof(t_stack), gc, GC_DEFAULT);
-	if (!stack_b)
-		return (0);
-	stack_a = ft_stack_init(stack_a, int_array, size, gc);
-	//ft_push_swap_solver(stack_a, stack_b, gc);
+	ft_push_swap_solver(ctx);
 	return (1);
 }

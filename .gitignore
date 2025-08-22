@@ -1,4 +1,5 @@
 *.out
+*.o
 checker_linux
 push_swap
 *.swp*
