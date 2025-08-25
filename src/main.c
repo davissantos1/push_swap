@@ -15,27 +15,28 @@
 int	main(int argc, char **argv)
 {
 	t_gc	*gc;
-	int		result;
 	char	**parsed;
 
+	if (argc < 2)
+		return (1);
 	gc = gc_init();
-	if (!gc || argc < 2)
+	parsed = ft_parse_nbrs(argc, argv);
+	if (!gc || !gc_addmtx(parsed, gc, GC_DEFAULT))
 	{
-		gc_free_all(gc);
+		gc = gc_free_all(gc);
 		return (1);
 	}
-	parsed = ft_parse_nbrs(argc, argv);
-	if (!gc_addmtx(parsed, gc, GC_DEFAULT))
-		return (1);
 	if (!ft_parse_error(parsed))
 	{
 		ft_putstr_fd("Error\n", 2);
-		gc_free_all(gc);
+		gc = gc_free_all(gc);
 		return (1);
 	}
-	result = ft_push_swap(parsed, gc);
-	if (!result)
+	if (!ft_push_swap(parsed, gc))
+	{
+		gc = gc_free_all(gc);
 		return (1);
+	}
 	gc = gc_free_all(gc);
 	return (0);
 }

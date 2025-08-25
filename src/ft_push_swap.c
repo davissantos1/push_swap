@@ -24,13 +24,8 @@ t_ctx	*ft_ctx_init(char **parsed, t_gc *gc)
 	ctx->arr = ft_strings_to_ints(parsed, gc);
 	if (!ctx->arr)
 		return (0);
-	ctx->arr = ft_bubble_sort_int(ctx->arr, ctx->size);
-	ctx->sa = gc_malloc(sizeof(t_stack), gc, GC_DEFAULT);
-	if (!ctx->sa)
-		return (0);
-	ctx->sb = gc_malloc(sizeof(t_stack), gc, GC_DEFAULT);
-	if (!ctx->sb)
-		return (0);
+	ctx->sa = NULL;
+	ctx->sb = NULL;
 	return (ctx);
 }
 

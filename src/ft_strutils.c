@@ -39,7 +39,7 @@ int	*ft_strings_to_ints(char **parsed, t_gc *gc)
 	int	i;
 
 	i = 0;
-	size = ft_mtxlen(parsed);
+	size = ft_mtxlen(parsed) - 2;
 	result = gc_malloc((size * sizeof(int)), gc, GC_DEFAULT);
 	if (!result)
 		return (NULL);
