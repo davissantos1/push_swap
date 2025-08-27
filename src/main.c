@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -20,19 +20,19 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	gc = gc_init();
-	parsed = ft_parse_nbrs(argc, argv);
+	parsed = parse_nbrs(argc, argv);
 	if (!gc || !gc_addmtx(parsed, gc, GC_DEFAULT))
 	{
 		gc = gc_free_all(gc);
 		return (1);
 	}
-	if (!ft_parse_error(parsed))
+	if (!parse_error(parsed))
 	{
 		ft_putstr_fd("Error\n", 2);
 		gc = gc_free_all(gc);
 		return (1);
 	}
-	if (!ft_push_swap(parsed, gc))
+	if (!push_swap(parsed, gc))
 	{
 		gc = gc_free_all(gc);
 		return (1);

@@ -10,9 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "push_swap.h"
 
-int	ft_is_valid_num(char *num)
+int	find_index(int nbr, int *arr, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (arr[i] == nbr)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+	
+int	is_valid_num(char *num)
 {
 	long	nbr;
 	int		i;
@@ -32,14 +46,14 @@ int	ft_is_valid_num(char *num)
 	return (1);
 }
 
-int	*ft_strings_to_ints(char **parsed, t_gc *gc)
+int	*strings_to_ints(char **parsed, t_gc *gc)
 {
 	int	*result;
 	int	size;
 	int	i;
 
 	i = 0;
-	size = ft_mtxlen(parsed) - 2;
+	size = ft_mtxlen(parsed);
 	result = gc_malloc((size * sizeof(int)), gc, GC_DEFAULT);
 	if (!result)
 		return (NULL);
@@ -51,7 +65,7 @@ int	*ft_strings_to_ints(char **parsed, t_gc *gc)
 	return (result);
 }
 
-char	**ft_parse_nbrs(int argc, char **argv)
+char	**parse_nbrs(int argc, char **argv)
 {
 	char	**parsed;
 	char	**splitted;
@@ -74,7 +88,7 @@ char	**ft_parse_nbrs(int argc, char **argv)
 	return (parsed);
 }
 
-int	ft_parse_error(char **parsed)
+int	parse_error(char **parsed)
 {
 	int	i;
 	int	j;

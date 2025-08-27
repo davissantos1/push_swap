@@ -1,6 +1,6 @@
-#include "ft_push_swap.h"
+#include "push_swap.h"
 
-void	ft_push_swap_pa(t_stack **head_a, t_stack **head_b)
+void	pa(t_stack **head_a, t_stack **head_b, int print)
 {
 	t_stack	*node;
 
@@ -15,9 +15,11 @@ void	ft_push_swap_pa(t_stack **head_a, t_stack **head_b)
 	if (*head_a)
 		(*head_a)->prev = node;
 	*head_a = node;
+	if (print)
+		ft_putstr_fd("pa\n", 1);
 }
 
-void	ft_push_swap_pb(t_stack **head_a, t_stack **head_b)
+void	pb(t_stack **head_a, t_stack **head_b, int print)
 {
 	t_stack	*node;
 
@@ -32,9 +34,11 @@ void	ft_push_swap_pb(t_stack **head_a, t_stack **head_b)
 	if (*head_b)
 		(*head_b)->prev = node;
 	*head_b = node;
+	if (print)
+		ft_putstr_fd("pb\n", 1);
 }
 
-void	ft_push_swap_sa(t_stack **head_a)
+void	sa(t_stack **head_a, int print)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -52,9 +56,11 @@ void	ft_push_swap_sa(t_stack **head_a)
 	second->prev = NULL;
 	if (third)
 		third->prev = first;
+	if (print)
+		ft_putstr_fd("sa\n", 1);
 }
 
-void	ft_push_swap_sb(t_stack **head_b)
+void	sb(t_stack **head_b, int print)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -72,10 +78,14 @@ void	ft_push_swap_sb(t_stack **head_b)
 	second->prev = NULL;
 	if (third)
 		third->prev = first;
+	if (print)
+		ft_putstr_fd("sb\n", 1);
 }
 
-void	ft_push_swap_ss(t_stack **head_a, t_stack **head_b)
+void	ss(t_stack **head_a, t_stack **head_b, int print)
 {
-	ft_push_swap_sa(head_a);
-	ft_push_swap_sb(head_b);
+	sa(head_a, 0);
+	sb(head_b, 0);
+	if (print)
+		ft_putstr_fd("ss\n", 1);
 }
