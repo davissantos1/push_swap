@@ -97,7 +97,7 @@ int	parse_error(char **parsed)
 	while (parsed[i])
 	{
 		j = i + 1;
-		if (!ft_is_valid_num(parsed[i]))
+		if (!is_valid_num(parsed[i]))
 			return (0);
 		while (parsed[j])
 		{

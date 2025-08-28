@@ -2,7 +2,7 @@
 
 CC= cc
 CFLAGS= -Wall -Wextra -Werror -Wpedantic -Iincludes
-SRC= src/main.c src/str_utils.c src/stack_utils.c src/push_swap.c src/push_swap_ops.c src/rotate_ops.c src/reverse_rotate_ops.c src/push_swap_checker.c src/push_swap_solver.c
+SRC= src/str_utils.c src/stack_utils.c src/push_swap.c src/push_swap_ops.c src/rotate_ops.c src/reverse_rotate_ops.c src/push_swap_checker.c src/push_swap_solver.c src/apply_ops.c src/solver_utils_ba.c src/solver_utils_ab.c src/calc_utils.c
 OBJ= $(SRC:.c=.o)
 NAME= push_swap
 LIBFT_DIR= libft

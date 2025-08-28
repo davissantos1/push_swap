@@ -20,7 +20,7 @@ int	stack_size(t_stack *stack)
 	return (size);
 }
 
-t_stack	*stack_createnode(long nbr, t_gc *gc, t_gc_tag tag)
+t_stack	*stack_createnode(int nbr, t_gc *gc, t_gc_tag tag)
 {
 	t_stack	*node;
 

@@ -1,45 +1,69 @@
-#include "push_swap.c"
+#include "push_swap.h"
 
-int	case_rr_ba(t_stack *sa, t_stack *sb, int nbr)
+int	rotation_count_ba(t_ctx *ctx)
 {
 	int	i;
+	t_stack *tmp;
 
-	i = find_place_sa(sa, nbr);
-	if (i < find_stack_index(sb, nbr))
-		i = find_stack_index(sb, nbr);
-	return (i);
-}
-
-int	case_rrr_ba(t_stack *sa, t_stack *sb, int nbr)
-{
-	int i;
-
-	if (find_place_sa(sa, nbr))
-		i = stack_size(sa) - find_place_sa(sa, nbr);
-	if (find_stack_index(sb, nbr))
+	tmp = ctx->sb;
+	i = case_rr_ba(ctx, ctx->sb->num);
+	while (tmp)
 	{
-		if (i < (stack_size(sb) - find_stack_index(sb, nbr))
-			i = stack_size(sb) - find_stack_index(sb, nbr);
+		if (i > case_rr_ba(ctx, tmp->num))
+			i = case_rr_ba(ctx, tmp->num);
+		if (i > case_rrr_ba(ctx, tmp->num))
+			i = case_rrr_ba(ctx, tmp->num);
+		if (i > case_rrarb_ba(ctx, tmp->num))
+			i = case_rrarb_ba(ctx, tmp->num);
+		if (i > case_rarrb_ba(ctx, tmp->num))
+			i = case_rarrb_ba(ctx, tmp->num);
+		tmp = tmp->next;
 	}
 	return (i);
 }
 
-int	case_rrarb_ba(t_stack *sa, t_stack *sb, int nbr)
+int	case_rr_ba(t_ctx *ctx, int nbr)
 {
 	int	i;
 
-	i = 0;
-	if (find_place_sa(sa, nbr))
-		i = stack_size(sa) - find_place_sa(sa, nbr);
-	i = find_stack_index(sb, nbr) + i;
+	i = find_place_sa(ctx->sa, nbr);
+	if (i < find_stack_index(ctx->sb, nbr))
+		i = find_stack_index(ctx->sb, nbr);
+	return (i);
 }
 
-int	case_rarrb_ba(t_stack *sa, t_stack *sb, int nbr)
+int	case_rrr_ba(t_ctx *ctx, int nbr)
+{
+	int i;
+
+	if (find_place_sa(ctx->sa, nbr))
+		i = stack_size(ctx->sa) - find_place_sa(ctx->sa, nbr);
+	if (find_stack_index(ctx->sb, nbr))
+	{
+		if (i < (stack_size(ctx->sb) - find_stack_index(ctx->sb, nbr)))
+			i = stack_size(ctx->sb) - find_stack_index(ctx->sb, nbr);
+	}
+	return (i);
+}
+
+int	case_rrarb_ba(t_ctx *ctx, int nbr)
 {
 	int	i;
 
 	i = 0;
-	if (find_stack_index(sb, nbr))
-		i = stack_size(sb) - find_stack_index(sb, nbr);
-	i = find_place_sa(sa, nbr) + i;
+	if (find_place_sa(ctx->sa, nbr))
+		i = stack_size(ctx->sa) - find_place_sa(ctx->sa, nbr);
+	i = find_stack_index(ctx->sb, nbr) + i;
+	return (i);
+}
+
+int	case_rarrb_ba(t_ctx *ctx, int nbr)
+{
+	int	i;
+
+	i = 0;
+	if (find_stack_index(ctx->sb, nbr))
+		i = stack_size(ctx->sb) - find_stack_index(ctx->sb, nbr);
+	i = find_place_sa(ctx->sa, nbr) + i;
+	return (i);
 }
