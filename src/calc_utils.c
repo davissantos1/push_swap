@@ -55,7 +55,7 @@ int	find_place_sa(t_stack *sa, int nbr)
 	else
 	{
 		tmp = sa->next;
-		while (sa->num < nbr || tmp->num > nbr)
+		while (tmp && (sa->num < nbr || tmp->num > nbr))
 		{
 			i++;
 			sa = sa->next;
@@ -78,7 +78,7 @@ int	find_place_sb(t_stack *sb, int nbr)
 	else
 	{
 		tmp = sb->next;
-		while (sb->num > nbr || tmp->num < nbr)
+		while (tmp && (sb->num > nbr || tmp->num < nbr))
 		{
 			i++;
 			sb = sb->next;

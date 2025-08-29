@@ -1,5 +1,8 @@
 #include "push_swap.h"
-
+// first > second < third 9, 8, 10
+// first < second > third 8, 10, 9
+// first < second < third 8, 9, 10
+// first > second > third 10, 9, 8
 void	solve_three(t_ctx *ctx)
 {
 	t_stack *first;
@@ -7,20 +10,20 @@ void	solve_three(t_ctx *ctx)
 
 	first = ctx->sa;
 	second = first->next;
-	if (!check_sa(ctx->sa)) 	
+	if (check_sa(ctx->sa)) 	
 		return ;	
 	if (check_sb(ctx->sa))
+	{
+		sa(&ctx->sa, 1);
+		rra(&ctx->sa, 1);
+	}
+	else if (first->num < second->num)
 	{
 		rra(&ctx->sa, 1);
 		sa(&ctx->sa, 1);
 	}
-	else if (first->num < second->num)
-	{
-		sa(&ctx->sa, 1);
-		ra(&ctx->sa, 1);
-	}
 	else 
-		ra(&ctx->sa, 1);
+		sa(&ctx->sa, 1);
 }	
 
 void	solve_ab(t_ctx *ctx)
