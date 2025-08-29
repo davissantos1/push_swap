@@ -23,7 +23,6 @@
 typedef struct		s_stack
 {
 	long			num;
-	long			index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
@@ -34,7 +33,6 @@ typedef struct		s_ctx
 	struct s_stack	*sa;
 	struct s_stack	*sb;
 	int				*arr;
-	int				*sorted;
 	int				size;
 }					t_ctx;
 

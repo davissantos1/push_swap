@@ -33,12 +33,11 @@ int	find_stack_index(t_stack *stack, int nbr)
 	int	i;
 
 	i = 0;
-	while (stack->num != nbr)
+	while (stack && stack->num != nbr)
 	{
 		i++;
 		stack = stack->next;
 	}
-	stack->index = 0;
 	return (i);
 }
 
@@ -48,14 +47,14 @@ int	find_place_sa(t_stack *sa, int nbr)
 	int		i;
 
 	i = 1;
-	if (nbr < sa->num || nbr > stack_last(sa)->num)
+	if (nbr < sa->num && nbr > stack_last(sa)->num)
 		i = 0;
 	else if (nbr > stack_max(sa) || nbr < stack_min(sa))
-		i = find_stack_index(sa, nbr);
+		i = find_stack_index(sa, stack_min(sa));
 	else
 	{
 		tmp = sa->next;
-		while (tmp && (sa->num < nbr || tmp->num > nbr))
+		while (tmp && (sa->num > nbr || tmp->num < nbr))
 		{
 			i++;
 			sa = sa->next;
@@ -71,14 +70,14 @@ int	find_place_sb(t_stack *sb, int nbr)
 	int		i;
 
 	i = 1;
-	if (nbr < sb->num || nbr > stack_last(sb)->num)
+	if (nbr > sb->num && nbr < stack_last(sb)->num)
 		i = 0;
 	else if (nbr > stack_max(sb) || nbr < stack_min(sb))
-		i = find_stack_index(sb, nbr);
+		i = find_stack_index(sb, stack_max(sb));
 	else
 	{
 		tmp = sb->next;
-		while (tmp && (sb->num > nbr || tmp->num < nbr))
+		while (tmp && (sb->num < nbr || tmp->num > nbr))
 		{
 			i++;
 			sb = sb->next;
@@ -87,4 +86,3 @@ int	find_place_sb(t_stack *sb, int nbr)
 	}
 	return (i);
 }
-		

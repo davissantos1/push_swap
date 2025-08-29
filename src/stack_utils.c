@@ -61,7 +61,6 @@ t_stack	*stack_init(t_ctx *ctx, t_gc *gc)
 		node = stack_createnode((ctx->arr)[i], gc, GC_TEMP);
 		if (!node)
 			return (gc_free_tag(gc, GC_TEMP));
-		node->index = find_index((ctx->arr)[i], ctx->sorted, ctx->size);
 		ctx->sa = stack_addtop(ctx->sa, node);
 		i--;
 	}

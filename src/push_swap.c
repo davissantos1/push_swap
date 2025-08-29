@@ -21,10 +21,8 @@ t_ctx	*ctx_init(char **parsed, t_gc *gc)
 		return (0);
 	ctx->size = ft_mtxlen(parsed);
 	ctx->arr = strings_to_ints(parsed, gc);
-	ctx->sorted = strings_to_ints(parsed, gc);
-	if (!ctx->arr || !ctx->sorted)
+	if (!ctx->arr)
 		return (0);
-	ctx->sorted = ft_bubble_sort_int(ctx->sorted, ctx->size);
 	ctx->sa = NULL;
 	ctx->sb = NULL;
 	return (ctx);
