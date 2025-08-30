@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 22:40:21 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/30 16:05:54 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/30 18:56:22 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	push_swap_solver(t_ctx *ctx)
 	else
 	{
 		stack_solver(ctx);
-		i = find_index(stack_min(ctx->sa), ctx->arr, ctx->size);
+		i = find_stack_index(ctx->sa, stack_min(ctx->sa));
 		if (i < ctx->size - i)
 		{
 			while ((ctx->sa)->num != stack_min(ctx->sa))
