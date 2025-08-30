@@ -11,28 +11,37 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+// 9 8 10 (sa) OK
+// 10 9 8 (sa, rra) 
+// 8 10 9 (sa, ra) OK
+// 9 10 8 (rra)
+// 10 8 9 (ra) OK
+// 8 9 10 (OK)
 void	solve_three(t_ctx *ctx)
 {
-	t_stack	*first;
-	t_stack	*second;
+	int	small;
 
-	first = ctx->sa;
-	second = first->next;
 	if (check_sa(ctx->sa))
 		return ;
-	if (check_sb(ctx->sa))
+	small = stack_min(ctx->sa);
+	if (ctx->sa->num == small)
 	{
 		sa(&ctx->sa, 1);
-		rra(&ctx->sa, 1);
+		ra(&ctx->sa, 1);
 	}
-	else if (first->num < second->num)
+	else if (ctx->sa->next->num == small)
 	{
-		rra(&ctx->sa, 1);
-		sa(&ctx->sa, 1);
+		if (ctx->sa->num > ctx->sa->next->next->num)
+			ra(&ctx->sa, 1);
+		else
+			sa(&ctx->sa, 1);
 	}
 	else
-		sa(&ctx->sa, 1);
+	{
+		if (ctx->sa->num > ctx->sa->next->num)
+			sa(&ctx->sa, 1);
+		rra(&ctx->sa, 1);
+	}
 }
 
 void	solve_ab(t_ctx *ctx)
