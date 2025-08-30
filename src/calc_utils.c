@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   calc_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/29 22:39:17 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/29 22:45:29 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long	stack_min(t_stack *stack)
 {
-	long min;
+	long	min;
 
 	min = stack->num;
 	while (stack)
@@ -16,7 +28,7 @@ long	stack_min(t_stack *stack)
 
 long	stack_max(t_stack *stack)
 {
-	long max;
+	long	max;
 
 	max = stack->num;
 	while (stack)
@@ -43,7 +55,7 @@ int	find_stack_index(t_stack *stack, int nbr)
 
 int	find_place_sa(t_stack *sa, int nbr)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 
 	i = 1;
@@ -66,7 +78,7 @@ int	find_place_sa(t_stack *sa, int nbr)
 
 int	find_place_sb(t_stack *sb, int nbr)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 
 	i = 1;

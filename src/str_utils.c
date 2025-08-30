@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strutils.c                                      :+:      :+:    :+:   */
+/*   str_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 21:24:45 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/12 21:54:06 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/29 22:52:54 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	find_index(int nbr, int *arr, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -25,7 +25,7 @@ int	find_index(int nbr, int *arr, int size)
 	}
 	return (-1);
 }
-	
+
 int	is_valid_num(char *num)
 {
 	long	nbr;
@@ -71,7 +71,7 @@ char	**parse_nbrs(int argc, char **argv)
 	char	**splitted;
 	char	**temp;
 	int		i;
-	
+
 	i = 1;
 	parsed = ft_calloc(1, sizeof(char *));
 	if (!parsed)

@@ -1,17 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_solver.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/29 22:40:21 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/29 22:51:46 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-// first > second < third 9, 8, 10
-// first < second > third 8, 10, 9
-// first < second < third 8, 9, 10
-// first > second > third 10, 9, 8
+
 void	solve_three(t_ctx *ctx)
 {
-	t_stack *first;
-	t_stack *second;
+	t_stack	*first;
+	t_stack	*second;
 
 	first = ctx->sa;
 	second = first->next;
-	if (check_sa(ctx->sa)) 	
-		return ;	
+	if (check_sa(ctx->sa))
+		return ;
 	if (check_sb(ctx->sa))
 	{
 		sa(&ctx->sa, 1);
@@ -22,14 +31,14 @@ void	solve_three(t_ctx *ctx)
 		rra(&ctx->sa, 1);
 		sa(&ctx->sa, 1);
 	}
-	else 
+	else
 		sa(&ctx->sa, 1);
-}	
+}
 
 void	solve_ab(t_ctx *ctx)
 {
-	t_stack *tmp;
-	int	i;
+	t_stack	*tmp;
+	int		i;
 
 	while (stack_size(ctx->sa) > 3)
 	{
@@ -53,8 +62,8 @@ void	solve_ab(t_ctx *ctx)
 
 void	solve_ba(t_ctx *ctx)
 {
-	t_stack *tmp;
-	int	i;
+	t_stack	*tmp;
+	int		i;
 
 	while (ctx->sb)
 	{
@@ -86,7 +95,7 @@ void	stack_solver(t_ctx *ctx)
 		solve_ab(ctx);
 	if (!check_sa(ctx->sa))
 		solve_three(ctx);
-	solve_ba(ctx);	
+	solve_ba(ctx);
 }
 
 void	push_swap_solver(t_ctx *ctx)
@@ -110,6 +119,6 @@ void	push_swap_solver(t_ctx *ctx)
 		{
 			while ((ctx->sa)->num != stack_min(ctx->sa))
 				rra(&(ctx->sa), 1);
-		} 
+		}
 	}
 }

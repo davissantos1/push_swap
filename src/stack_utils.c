@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/29 22:41:37 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/29 22:53:25 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_stack *stack_last(t_stack *stack)
+t_stack	*stack_last(t_stack *stack)
 {
 	while (stack->next)
 		stack = stack->next;
@@ -9,7 +21,7 @@ t_stack *stack_last(t_stack *stack)
 
 int	stack_size(t_stack *stack)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	while (stack)

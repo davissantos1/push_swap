@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_ops.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/29 22:40:08 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/29 22:52:22 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	pa(t_stack **head_a, t_stack **head_b, int print)
@@ -43,7 +55,7 @@ void	sa(t_stack **head_a, int print)
 	t_stack	*first;
 	t_stack	*second;
 	t_stack	*third;
-	
+
 	if (!head_a || !*head_a || !(*head_a)->next)
 		return ;
 	first = *head_a;
@@ -65,7 +77,7 @@ void	sb(t_stack **head_b, int print)
 	t_stack	*first;
 	t_stack	*second;
 	t_stack	*third;
-	
+
 	if (!head_b || !*head_b || !(*head_b)->next)
 		return ;
 	first = *head_b;

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver_utils_ba.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/29 22:41:16 by dasimoes          #+#    #+#             */
+/*   Updated: 2025/08/29 22:54:16 by dasimoes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	rotation_count_ba(t_ctx *ctx)
 {
-	int	i;
-	t_stack *tmp;
+	int		i;
+	t_stack	*tmp;
 
 	tmp = ctx->sb;
 	i = case_rr_ba(ctx, ctx->sb->num);
@@ -34,7 +46,7 @@ int	case_rr_ba(t_ctx *ctx, int nbr)
 
 int	case_rrr_ba(t_ctx *ctx, int nbr)
 {
-	int i;
+	int	i;
 
 	if (find_place_sa(ctx->sa, nbr))
 		i = stack_size(ctx->sa) - find_place_sa(ctx->sa, nbr);

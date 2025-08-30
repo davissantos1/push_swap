@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 16:15:24 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/13 14:43:59 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/29 22:44:11 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@
 // Structs
 
 // Stack structure
-typedef struct		s_stack
+typedef struct s_stack
 {
 	long			num;
 	struct s_stack	*next;
 	struct s_stack	*prev;
-}					t_stack;
+}	t_stack;
 
 // Context structure
-typedef struct		s_ctx
+typedef struct s_ctx
 {
 	struct s_stack	*sa;
 	struct s_stack	*sb;
 	int				*arr;
 	int				size;
-}					t_ctx;
+}	t_ctx;
 
 // Prototypes
 
@@ -49,7 +49,7 @@ int		find_index(int nbr, int *arr, int size);
 t_stack	*stack_createnode(int nbr, t_gc *gc, t_gc_tag tag);
 t_stack	*stack_addtop(t_stack *head, t_stack *node);
 t_stack	*stack_init(t_ctx *ctx, t_gc *gc);
-t_stack *stack_last(t_stack *stack);
+t_stack	*stack_last(t_stack *stack);
 long	stack_min(t_stack *stack);
 long	stack_max(t_stack *stack);
 int		find_stack_index(t_stack *stack, int nbr);
