@@ -3,5 +3,6 @@
 checker_linux
 push_swap
 push_swap_tester
+Push-Swap-Tester
 *.swp*
 .vscode

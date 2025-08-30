@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 21:24:45 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/29 22:52:54 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/30 16:50:15 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	is_valid_num(char *num)
 	int		i;
 
 	i = 0;
+	if (!num || !*num)
+		return (0);
 	while (num[i])
 	{
 		if (i == 0 && (num[i] == '-' || num[i] == '+'))
@@ -101,6 +103,8 @@ int	parse_error(char **parsed)
 			return (0);
 		while (parsed[j])
 		{
+			if (atol(parsed[i]) == atol(parsed[j]))
+				return (0);
 			if (!ft_strncmp(parsed[i], parsed[j], 12))
 				return (0);
 			j++;

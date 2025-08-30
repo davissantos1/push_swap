@@ -6,17 +6,12 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 22:40:21 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/29 22:51:46 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/30 16:05:54 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// 9 8 10 (sa) OK
-// 10 9 8 (sa, rra) 
-// 8 10 9 (sa, ra) OK
-// 9 10 8 (rra)
-// 10 8 9 (ra) OK
-// 8 9 10 (OK)
+
 void	solve_three(t_ctx *ctx)
 {
 	int	small;

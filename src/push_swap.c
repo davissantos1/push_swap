@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 23:22:19 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/29 22:39:52 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/30 17:17:05 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 		gc = gc_free_all(gc);
 		return (1);
 	}
-	if (!parse_error(parsed))
+	if (!argv[1][0] || !parse_error(parsed))
 	{
 		ft_putstr_fd("Error\n", 2);
 		gc = gc_free_all(gc);
