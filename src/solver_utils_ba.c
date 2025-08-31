@@ -6,7 +6,7 @@
 /*   By: dasimoes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 22:41:16 by dasimoes          #+#    #+#             */
-/*   Updated: 2025/08/29 22:54:16 by dasimoes         ###   ########.fr       */
+/*   Updated: 2025/08/30 21:59:04 by dasimoes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	case_rrr_ba(t_ctx *ctx, int nbr)
 {
 	int	i;
 
+	i = 0;
 	if (find_place_sa(ctx->sa, nbr))
 		i = stack_size(ctx->sa) - find_place_sa(ctx->sa, nbr);
 	if (find_stack_index(ctx->sb, nbr))
